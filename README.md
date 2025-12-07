@@ -10,7 +10,7 @@ You sit down at a fine dining establishment, review the menu, and notice that th
 
 If the above scenario resonates with you, then you have stumbled upon the right place in your coding interview preparation journey. Why prepare for coding interviews in languages like Python, Java, or C++? Who needs helpful standard libraries and Leetcode's browser compiler? Just use C. Success has two C's for a reason.
 
-Compile your tests and solutions in pure C, as K&R intended.
+> "If you want a nine figure offer from Meta, LeetCode in C." - K&R (1978)
 
 ## About This Repository
 
