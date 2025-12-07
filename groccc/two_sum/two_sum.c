@@ -53,8 +53,10 @@ two_sum(struct Two_sum_input const *const test_case)
     };
     for (size_t i = 0; i < test_case->nums_count; ++i)
     {
-        struct Int_key_val const *const other_addend = get_key_value(
-            &map, &(int){test_case->target - test_case->nums[i]});
+        struct Int_key_val const *const other_addend
+            = get_key_value(&map, &(int){
+                                      test_case->target - test_case->nums[i],
+                                  });
         if (other_addend)
         {
             solution.addends[0] = (int)i;
