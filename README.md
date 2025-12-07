@@ -8,4 +8,4 @@ Let us compile our solutions, as K&R intended.
 
 ## About
 
-This is a testbed for my [C Container Collection](https://github.com/agl-alexglopez/ccc). I can prep for coding interviews and exercise the test cases for varous containers at the same time with this approach. Check back for updates on how to build and use this repository as it matures. Right now, it is just a personal helper to obviate the crushing boredom that comes when logging on to Leetcode.
+This is a test bed for my [C Container Collection](https://github.com/agl-alexglopez/ccc). I can prep for coding interviews and exercise the test cases for various containers at the same time with this approach. Check back for updates on how to build and use this repository as it matures. Right now, it is just a personal helper to obviate the crushing boredom that comes when logging on to Leetcode.
