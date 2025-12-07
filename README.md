@@ -12,7 +12,7 @@ If the above scenario resonates with you, then you have stumbled upon the right 
 
 > "If you want a nine figure offer from Meta, LeetCode in C." - K&R (1978)
 
-## About This Repository
+## About
 
 This project serves as a testbed for my C Container Collection. By solving interview-style problems in C, I simultaneously verify container correctness, build real usage examples, and avoid the soul crushing boredom that comes with logging on to LeetCode.
 
