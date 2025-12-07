@@ -1,4 +1,4 @@
-.PHONY: gcc-ccc clang-ccc default build gcc-release gcc-debug clang-release clang-debug sanitize-debug sanitize-release clean tidy format
+.PHONY: default build gcc-release gcc-debug clang-release clang-debug sanitize-debug sanitize-release clean tidy format
 
 MAKE := $(MAKE)
 MAKEFLAGS += --no-print-directory
@@ -12,27 +12,27 @@ build:
 	cmake --build $(BUILD_DIR) $(JOBS)
 
 gcc-release:
-	cmake --preset=gcc-release
+	cmake --preset=my-gcc-release
 	$(MAKE) build
 
 gcc-debug:
-	cmake --preset=gcc-debug
+	cmake --preset=my-gcc-debug
 	$(MAKE) build
 
 clang-release:
-	cmake --preset=clang-release
+	cmake --preset=my-clang-release
 	$(MAKE) build
 
 clang-debug:
-	cmake --preset=clang-debug
+	cmake --preset=my-clang-debug
 	$(MAKE) build
 
 sanitize-release:
-	cmake --preset=gcc-sanitize-release
+	cmake --preset=my-sanitize-release
 	$(MAKE) build
 
 sanitize-debug:
-	cmake --preset=gcc-sanitize-debug
+	cmake --preset=my-sanitize-debug
 	$(MAKE) build
 
 format:

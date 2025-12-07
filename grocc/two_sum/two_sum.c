@@ -2,13 +2,16 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#define FLAT_HASH_MAP_USING_NAMESPACE_CCC
+#define TRAITS_USING_NAMESPACE_CCC
 #include "ccc/flat_hash_map.h"
+#include "ccc/traits.h"
 #include "ccc/types.h"
 
 #include "../test_case_generator.h"
 #include "two_sum_test_cases.h"
 
-struct Val
+struct Int_key_val
 {
     int key;
     int val;
@@ -17,12 +20,12 @@ struct Val
 /** A small fixed map is good when 64 is a desirable upper bound on capacity.
 Insertions can continue for about 87.5% of the capacity so about 56. Play it
 safe and avoid this limit unless testing insertion failure is important. */
-CCC_flat_hash_map_declare_fixed_map(Small_fixed_map, struct Val, 64);
+flat_hash_map_declare_fixed_map(Small_fixed_map, struct Int_key_val, 64);
 
 static CCC_Order
 flat_hash_map_id_order(CCC_Key_comparator_context const order)
 {
-    struct Val const *const right = order.type_right;
+    struct Int_key_val const *const right = order.type_right;
     int const left = *((int *)order.key_left);
     return (left > right->key) - (left < right->key);
 }
@@ -41,25 +44,26 @@ flat_hash_map_int_to_u64(CCC_Key_context const k)
 struct Two_sum_output
 two_sum(struct Two_sum_input const *const test_case)
 {
-    CCC_Flat_hash_map map = CCC_flat_hash_map_initialize(
-        &(Small_fixed_map){}, struct Val, key, flat_hash_map_int_to_u64,
+    Flat_hash_map map = flat_hash_map_initialize(
+        &(Small_fixed_map){}, struct Int_key_val, key, flat_hash_map_int_to_u64,
         flat_hash_map_id_order, NULL, NULL,
-        CCC_flat_hash_map_fixed_capacity(Small_fixed_map));
-    struct Two_sum_output solution = {-1, -1};
+        flat_hash_map_fixed_capacity(Small_fixed_map));
+    struct Two_sum_output solution = {
+        .addends = {-1, -1},
+    };
     for (size_t i = 0; i < test_case->nums_count; ++i)
     {
-        struct Val const *const other_addend = CCC_flat_hash_map_get_key_value(
+        struct Int_key_val const *const other_addend = get_key_value(
             &map, &(int){test_case->target - test_case->nums[i]});
         if (other_addend)
         {
             solution.addends[0] = (int)i;
             solution.addends[1] = other_addend->val;
         }
-        (void)CCC_flat_hash_map_insert_or_assign(&map,
-                                                 &(struct Val){
-                                                     .key = test_case->nums[i],
-                                                     .val = (int)i,
-                                                 });
+        (void)insert_or_assign(&map, &(struct Int_key_val){
+                                         .key = test_case->nums[i],
+                                         .val = (int)i,
+                                     });
     }
     return solution;
 }
@@ -77,12 +81,12 @@ main(void)
             || (solution_output.addends[1] != correct_output->addends[0]
                 && solution_output.addends[1] != correct_output->addends[1]))
         {
-            (void)fprintf(stderr, "fail case: %s\n",
-                          TCG_test_case_name(two_sum_tests));
+            (void)fprintf(stderr, "fail for test: %s, file: %s, line: %d\n",
+                          TCG_test_case_name(two_sum_tests),
+                          TCG_test_case_file(two_sum_tests),
+                          TCG_test_case_line(two_sum_tests));
             return 1;
         }
-        (void)fprintf(stderr, "pass case: %s\n",
-                      TCG_test_case_name(two_sum_tests));
     });
     return 0;
 }
