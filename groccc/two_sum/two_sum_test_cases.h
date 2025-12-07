@@ -5,7 +5,7 @@
 struct Two_sum_input
 {
     int target;
-    int const *nums;
+    int const *const nums;
     size_t nums_count;
 };
 
