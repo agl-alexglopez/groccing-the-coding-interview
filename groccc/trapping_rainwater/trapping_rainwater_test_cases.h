@@ -47,7 +47,6 @@ TCG_test_case_end({
     .trapped_water_units = 6,
 })
 
-
 TCG_tests_end(trapping_rainwater_tests);
 /* clang-format on */
 
