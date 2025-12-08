@@ -53,6 +53,7 @@ trapping_rainwater(struct Trapping_rainwater_input const *input)
 int
 main(void)
 {
+    int passed = 0;
     TCG_for_each_test_case(trapping_rainwater_tests, {
         /* TODO: Use these to check your output against the correct output. */
         struct Trapping_rainwater_output const output = trapping_rainwater(
@@ -66,6 +67,12 @@ main(void)
                           TCG_test_case_file(trapping_rainwater_tests),
                           TCG_test_case_line(trapping_rainwater_tests));
         }
+        else
+        {
+            ++passed;
+        }
     });
+    (void)fprintf(stdout, "trapping_rainwater passed %d/%lu\n", passed,
+                  TCG_tests_count(trapping_rainwater_tests));
     return 0;
 }
