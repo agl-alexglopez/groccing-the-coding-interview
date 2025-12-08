@@ -92,6 +92,7 @@ two_sum(struct Two_sum_input const *const test_case)
 int
 main(void)
 {
+    int passed = 0;
     TCG_for_each_test_case(two_sum_tests, {
         struct Two_sum_output const solution_output
             = two_sum(&TCG_test_case_input(two_sum_tests));
@@ -103,9 +104,14 @@ main(void)
                           TCG_test_case_name(two_sum_tests),
                           TCG_test_case_file(two_sum_tests),
                           TCG_test_case_line(two_sum_tests));
-            return 1;
+        }
+        else
+        {
+            ++passed;
         }
     });
+    (void)fprintf(stdout, "two_sum passed %d/%lu\n", passed,
+                  TCG_tests_count(two_sum_tests));
     return 0;
 }
 ```
@@ -168,7 +174,7 @@ appropriately labeled with the correct designated initializer. */
 #define TCG_tests_end(test_cases_name)                                         \
     }                                                                          \
     ;                                                                          \
-    static const unsigned long long tcg_count_##test_cases_name                \
+    static const unsigned long tcg_count_##test_cases_name                     \
         = sizeof(test_cases_name) / sizeof((test_cases_name)[0])
 
 /** @brief Obtain the string name given to a test.
@@ -225,12 +231,21 @@ struct My_output_type const *output = &TCG_test_case_output(my_test_cases);
 The user can decide if retrieve by copy or reference is preferred. */
 #define TCG_test_case_output(test_cases_name) test_cases_name[tcg_index].output
 
+/** @brief Retrieve the unsigned long long count of tests for this test case
+struct.
+@param[in] test_cases_name the name of the current test cases struct.
+@return the unsigned count of tests contained within this struct.
+
+This can be helpful if the user is tracking how many tests are being passed or
+failed while iterating over the test cases struct. */
+#define TCG_tests_count(test_cases_name) tcg_count_##test_cases_name
+
 /** @brief Runs the provided solution, comparison code, and cleanup code over
 the user generated test code.
 @param[in] test_cases_name the static constant test cases structure.
-@param solution_comparison_and_cleanup_code the code needed to run the solution
-function with the test case input type as input, compare the function output to
-the test case output, and clean up any allocations as needed.
+@param solution_code_comparison_code_cleanup_code the code needed to run the
+solution function with the test case input type as input, compare the function
+output to the test case output, and clean up any allocations as needed.
 @note Use the provided name, input, and output getter macros to aid in
 processing each test case.
 
@@ -239,12 +254,12 @@ test failure looks like. It does not bring in any print or assert dependencies.
 Comparing scalars, arrays, and allocations can be tricky so the user can write
 the most type correct code in the provided code block. */
 #define TCG_for_each_test_case(test_cases_name,                                \
-                               solution_comparison_and_cleanup_code...)        \
+                               solution_code_comparison_code_cleanup_code...)  \
     (__extension__({                                                           \
-        for (unsigned long long tcg_index = 0;                                 \
-             tcg_index < tcg_count_##test_cases_name; ++tcg_index)             \
+        for (unsigned long tcg_index = 0;                                      \
+             tcg_index < TCG_tests_count(test_cases_name); ++tcg_index)        \
         {                                                                      \
-            solution_comparison_and_cleanup_code                               \
+            solution_code_comparison_code_cleanup_code                         \
         }                                                                      \
     }))
 

@@ -34,12 +34,10 @@ mkdir -p "$DIR"
 cat > "$C_FILE" <<EOF
 #include "${PROBLEM}_test_cases.h"
 
-/* TODO: implement solution for '$PROBLEM' */
-
+/* TODO: solve $PROBLEM */
 static struct ${STRUCT_PREFIX}_output
 ${PROBLEM}(struct ${STRUCT_PREFIX}_input *input)
 {
-    /* TODO: implement logic */
     return (struct ${STRUCT_PREFIX}_output){};
 }
 

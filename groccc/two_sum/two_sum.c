@@ -73,6 +73,7 @@ two_sum(struct Two_sum_input const *const test_case)
 int
 main(void)
 {
+    int passed = 0;
     TCG_for_each_test_case(two_sum_tests, {
         struct Two_sum_output const solution_output
             = two_sum(&TCG_test_case_input(two_sum_tests));
@@ -87,8 +88,13 @@ main(void)
                           TCG_test_case_name(two_sum_tests),
                           TCG_test_case_file(two_sum_tests),
                           TCG_test_case_line(two_sum_tests));
-            return 1;
+        }
+        else
+        {
+            ++passed;
         }
     });
+    (void)fprintf(stdout, "two_sum passed %d/%lu\n", passed,
+                  TCG_tests_count(two_sum_tests));
     return 0;
 }
