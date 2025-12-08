@@ -46,4 +46,3 @@ endmacro()
 
 add_problem(two_sum)
 add_problem(trapping_rainwater)
-add_problem(daily_temperatures)
