@@ -10,9 +10,9 @@ You sit down at a fine dining establishment, review the menu, and notice that th
 
 If the above scenario resonates with you, then you have stumbled upon the right place in your coding interview preparation journey. Why prepare for coding interviews in languages like Python, Java, or C++? Who needs helpful standard libraries or robust web browser interfaces? Success has two C's for a reason. A C compiler is all you need.
 
-> "If you want a nine figure offer from Meta, plus options, LeetCode in C."
+> *If you want a nine figure offer from Meta, plus options, LeetCode in C.*
 >
-> -- *Brian W. Kernighan and Dennis M. Ritchie (1978)*
+> -- Brian W. Kernighan and Dennis M. Ritchie (1978)
 
 ## About
 
