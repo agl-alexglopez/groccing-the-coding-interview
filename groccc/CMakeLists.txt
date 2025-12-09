@@ -19,6 +19,13 @@ FetchContent_MakeAvailable(ccc)
 
 add_custom_target(problems)
 
+##################   Add Utilities Available to All Tests   ###################
+
+add_library(loggers INTERFACE loggers.h)
+
+add_library(allocators allocators.h allocators.c)
+target_link_libraries(allocators PRIVATE ccc)
+
 #######################   Add Test Case Generator Helper   ####################
 
 add_library(test_case_generator INTERFACE test_case_generator.h)
@@ -28,11 +35,14 @@ add_dependencies(problems test_case_generator)
 
 macro(add_problem PROBLEM_NAME)
     add_library(${PROBLEM_NAME}_test_cases INTERFACE ${PROBLEM_NAME}/${PROBLEM_NAME}_test_cases.h)
+    target_link_libraries(${PROBLEM_NAME}_test_cases INTERFACE ccc)
     add_executable(${PROBLEM_NAME} ${PROBLEM_NAME}/${PROBLEM_NAME}.c)
     target_link_libraries(${PROBLEM_NAME}
         PRIVATE
             ccc
             test_case_generator
+            loggers
+            allocators
             ${PROBLEM_NAME}_test_cases
     )
 endmacro()
@@ -46,3 +56,4 @@ endmacro()
 
 add_problem(two_sum)
 add_problem(trapping_rainwater)
+add_problem(daily_temperatures)

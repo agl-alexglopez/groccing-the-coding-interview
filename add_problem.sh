@@ -61,8 +61,8 @@ EOF
 # Write test cases header
 ###########################################
 cat > "$H_FILE" <<EOF
-#ifndef ${HEADER_GUARD}
-#define ${HEADER_GUARD}
+#ifndef ${HEADER_GUARD}_H
+#define ${HEADER_GUARD}_H
 
 #include "../test_case_generator.h"
 
@@ -91,7 +91,7 @@ TCG_test_case("describe this test", {
 
 TCG_tests_end(${PROBLEM}_tests);
 
-#endif /* ${HEADER_GUARD} */
+#endif /* ${HEADER_GUARD}_H */
 EOF
 
 #################################

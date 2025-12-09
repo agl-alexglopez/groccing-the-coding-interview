@@ -2,10 +2,12 @@
 
 #define BUFFER_USING_NAMESPACE_CCC
 #define TRAITS_USING_NAMESPACE_CCC
+
+#include "../loggers.h"
+#include "trapping_rainwater_test_cases.h"
+
 #include "ccc/buffer.h"
 #include "ccc/traits.h"
-
-#include "trapping_rainwater_test_cases.h"
 
 static inline int
 max_int(int const a, int const b)
@@ -62,17 +64,13 @@ main(void)
             = &TCG_test_case_output(trapping_rainwater_tests);
         if (output.trapped_water_units != correct_output->trapped_water_units)
         {
-            (void)fprintf(stderr, "failure test: %s, file: %s, line: %d\n",
-                          TCG_test_case_name(trapping_rainwater_tests),
-                          TCG_test_case_file(trapping_rainwater_tests),
-                          TCG_test_case_line(trapping_rainwater_tests));
+            logfail(trapping_rainwater_tests);
         }
         else
         {
             ++passed;
         }
     });
-    (void)fprintf(stdout, "trapping_rainwater passed %d/%lu\n", passed,
-                  TCG_tests_count(trapping_rainwater_tests));
+    logstats(trapping_rainwater_tests, passed);
     return 0;
 }

@@ -8,6 +8,7 @@
 #include "ccc/traits.h"
 #include "ccc/types.h"
 
+#include "../loggers.h"
 #include "../test_case_generator.h"
 #include "two_sum_test_cases.h"
 
@@ -84,17 +85,13 @@ main(void)
             || (solution_output.addends[1] != correct_output->addends[0]
                 && solution_output.addends[1] != correct_output->addends[1]))
         {
-            (void)fprintf(stderr, "fail for test: %s, file: %s, line: %d\n",
-                          TCG_test_case_name(two_sum_tests),
-                          TCG_test_case_file(two_sum_tests),
-                          TCG_test_case_line(two_sum_tests));
+            logfail(two_sum_tests);
         }
         else
         {
             ++passed;
         }
     });
-    (void)fprintf(stdout, "two_sum passed %d/%lu\n", passed,
-                  TCG_tests_count(two_sum_tests));
+    logstats(two_sum_tests, passed);
     return 0;
 }
