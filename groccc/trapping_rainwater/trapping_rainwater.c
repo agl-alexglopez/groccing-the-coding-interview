@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #define BUFFER_USING_NAMESPACE_CCC
 #define TRAITS_USING_NAMESPACE_CCC
 

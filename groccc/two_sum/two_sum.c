@@ -1,16 +1,16 @@
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-
 #define FLAT_HASH_MAP_USING_NAMESPACE_CCC
 #define TRAITS_USING_NAMESPACE_CCC
-#include "ccc/flat_hash_map.h"
-#include "ccc/traits.h"
-#include "ccc/types.h"
+
+#include <stddef.h>
+#include <stdint.h>
 
 #include "../loggers.h"
 #include "../test_case_generator.h"
 #include "two_sum_test_cases.h"
+
+#include "ccc/flat_hash_map.h"
+#include "ccc/traits.h"
+#include "ccc/types.h"
 
 struct Int_key_val
 {
