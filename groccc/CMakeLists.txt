@@ -11,20 +11,38 @@ include(FetchContent)
 FetchContent_Declare(
   ccc
   URL https://github.com/agl-alexglopez/ccc/releases/download/v0.50.0/ccc-v0.50.0.zip
-  DOWNLOAD_EXTRACT_TIMESTAMP FALSE # CMake may raise a warning to set this.
+  DOWNLOAD_EXTRACT_TIMESTAMP FALSE
 )
 FetchContent_MakeAvailable(ccc)
+target_compile_options(ccc PRIVATE "-w")
+
+#########################   Fetch Str_view Library     ########################
+
+include(FetchContent)
+FetchContent_Declare(
+  str_view
+  URL https://github.com/agl-alexglopez/str_view/releases/download/v0.7.0/str_view-v0.7.0.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP FALSE
+)
+FetchContent_MakeAvailable(str_view)
+target_compile_options(str_view PRIVATE "-w")
 
 #########################   Create Problems Target   ##########################
 
 add_custom_target(problems)
+
+########################     Add Problem Runner     ###########################
+
+add_executable(run_problems run_problems.c)
+target_link_libraries(run_problems str_view::str_view)
+add_dependencies(problems run_problems)
 
 ##################   Add Utilities Available to All Tests   ###################
 
 add_library(loggers INTERFACE loggers.h)
 
 add_library(allocators allocators.h allocators.c)
-target_link_libraries(allocators PRIVATE ccc)
+target_link_libraries(allocators PRIVATE ccc::ccc)
 
 #######################   Add Test Case Generator Helper   ####################
 
@@ -35,16 +53,22 @@ add_dependencies(problems test_case_generator)
 
 macro(add_problem PROBLEM_NAME)
     add_library(${PROBLEM_NAME}_test_cases INTERFACE ${PROBLEM_NAME}/${PROBLEM_NAME}_test_cases.h)
-    target_link_libraries(${PROBLEM_NAME}_test_cases INTERFACE ccc)
+    target_link_libraries(${PROBLEM_NAME}_test_cases INTERFACE ccc::ccc)
     add_executable(${PROBLEM_NAME} ${PROBLEM_NAME}/${PROBLEM_NAME}.c)
     target_link_libraries(${PROBLEM_NAME}
         PRIVATE
-            ccc
+            ccc::ccc
             test_case_generator
             loggers
             allocators
             ${PROBLEM_NAME}_test_cases
     )
+    set_target_properties(${PROBLEM_NAME}
+        PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY
+                ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/problems
+    )
+    add_dependencies(problems ${PROBLEM_NAME})
 endmacro()
 
 ###########################        Problem List      ##########################

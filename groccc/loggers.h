@@ -5,6 +5,11 @@
 
 #include "test_case_generator.h"
 
+#define LOG_RED "\033[38;5;9m"
+#define LOG_GREEN "\033[38;5;10m"
+#define LOG_CYAN "\033[38;5;14m"
+#define LOG_NONE "\033[0m"
+
 #define logout(format_string...) (void)fprintf(stdout, format_string);
 
 #define logerr(format_string...) (void)fprintf(stderr, format_string);

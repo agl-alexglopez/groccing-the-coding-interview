@@ -91,6 +91,5 @@ main(void)
             ++passed;
         }
     });
-    logstats(two_sum_tests, passed);
-    return 0;
+    return TCG_tests_status(two_sum_tests, passed);
 }

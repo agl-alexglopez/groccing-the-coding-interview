@@ -69,6 +69,5 @@ main(void)
             ++passed;
         }
     });
-    logstats(trapping_rainwater_tests, passed);
-    return 0;
+    return TCG_tests_status(trapping_rainwater_tests, passed);
 }

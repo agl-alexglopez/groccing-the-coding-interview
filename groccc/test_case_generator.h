@@ -136,6 +136,13 @@ should never be mutated. */
 #ifndef TCG_TEST_CASE_GENERATOR_H
 #define TCG_TEST_CASE_GENERATOR_H
 
+enum TCG_Tests_status : char /* NOLINT */
+{
+    TCG_TESTS_ERROR = -1,
+    TCG_TESTS_PASS = 0,
+    TCG_TESTS_FAIL = 1,
+};
+
 /** @brief Create a custom test case type struct with input and output types.
 @param[in] test_cases_name the name of the struct holding all test cases.
 @param[in] input_type the struct name of the input type. For clarity, define
@@ -295,5 +302,24 @@ the most type correct code in the provided code block. */
             solution_code_comparison_code_cleanup_code                         \
         }                                                                      \
     }))
+
+/** @brief A POSIX compliant return value status for a problem executable.
+@param[in] test_cases_name the test cases struct being solved.
+@param[in] passed_count the user maintained passed count based on user
+implemented correctness checks of input and output.
+@return a passing status of 0 if all tests pass or 1 if any tests did not pass.
+@note if an error status needs to be returned, do so separately. An error is
+not one of the two possible values for this macro.
+
+This is intended to formalize the return value of all problem executables in
+the case that they are run from a parent process. This allows for meaningful
+interprocess communication of the result of running test cases for that problem.
+The return values are POSIX compliant, choosing 0 for a good status and 1 for
+any errors or failed tests encountered. The -1 status may be used if an
+unexpected error occurs and can be returned to the parent process. However,
+that is not part of the two possible returns here. */
+#define TCG_tests_status(test_cases_name, passed_count)                        \
+    ((passed_count) == TCG_tests_count(test_cases_name)) ? TCG_TESTS_PASS      \
+                                                         : TCG_TESTS_FAIL
 
 #endif /* TCG_TEST_CASE_GENERATOR_H */

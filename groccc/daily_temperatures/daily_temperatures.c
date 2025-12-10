@@ -73,6 +73,5 @@ main(void)
             ++passed;
         }
     });
-    logstats(daily_temperatures_tests, passed);
-    return 0;
+    return TCG_tests_status(daily_temperatures_tests, passed);
 }
