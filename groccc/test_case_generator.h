@@ -319,7 +319,9 @@ any errors or failed tests encountered. The -1 status may be used if an
 unexpected error occurs and can be returned to the parent process. However,
 that is not part of the two possible returns here. */
 #define TCG_tests_status(test_cases_name, passed_count)                        \
-    ((passed_count) == TCG_tests_count(test_cases_name)) ? TCG_TESTS_PASS      \
-                                                         : TCG_TESTS_FAIL
+    ((typeof(TCG_tests_count(test_cases_name)))(passed_count)                  \
+     == TCG_tests_count(test_cases_name))                                      \
+        ? TCG_TESTS_PASS                                                       \
+        : TCG_TESTS_FAIL
 
 #endif /* TCG_TEST_CASE_GENERATOR_H */

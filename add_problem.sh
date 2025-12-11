@@ -46,6 +46,7 @@ ${PROBLEM}(struct ${STRUCT_PREFIX}_input *input)
 int
 main(void)
 {
+    int passed = 0;
     TCG_for_each_test_case(${PROBLEM}_tests, {
         /* TODO: Verify your output against the correct result. */
         struct ${STRUCT_PREFIX}_output const output 
@@ -53,7 +54,7 @@ main(void)
         struct ${STRUCT_PREFIX}_output const *const correct_output 
             = &TCG_test_case_output(${PROBLEM}_tests);
     });
-    return 0;
+    return TCG_tests_status(${PROBLEM}_tests, passed);
 }
 EOF
 

@@ -18,6 +18,10 @@ are_equal(Buffer const *const a, Buffer const *const b)
     {
         return false;
     }
+    if (!count(a).count)
+    {
+        return true;
+    }
     return memcmp(begin(a), begin(b), buffer_count_bytes(a).count) == 0;
 }
 
