@@ -16,7 +16,7 @@
 #include "../string_arena.h"
 #include "group_anagrams_tests.h"
 
-struct Str_view_int
+struct String_int
 {
     struct String_offset key;
     int val;
@@ -26,7 +26,7 @@ static CCC_Order
 str_view_int_are_equal(CCC_Key_comparator_context const compare)
 {
     struct String_offset const *const key = compare.key_left;
-    struct Str_view_int const *const type = compare.type_right;
+    struct String_int const *const type = compare.type_right;
     return (CCC_Order)SV_compare(
         (SV_Str_view){
             .str = string_arena_at(compare.context, key),
@@ -119,7 +119,7 @@ group_anagrams(struct Group_anagrams_input const *input,
         {
             digits_character_count += snprintf(NULL, 0, "%d", *freq);
         }
-        struct Str_view_int key_value = {
+        struct String_int key_value = {
             .key = string_arena_allocate(str_arena, digits_character_count + 1),
             .val = index,
         };
@@ -140,7 +140,7 @@ group_anagrams(struct Group_anagrams_input const *input,
             string_position += characters_needed_for_frequency;
         }
         CCC_Entry anagram = try_insert(anagram_map, &key_value);
-        struct Str_view_int const *const inserted = unwrap(&anagram);
+        struct String_int const *const inserted = unwrap(&anagram);
         if (occupied(&anagram))
         {
             /* Save a little space and the string arena will only store unique
@@ -169,7 +169,7 @@ main(void)
     struct String_arena str_arena = string_arena_create(4096);
     Buffer groups = buffer_initialize(NULL, Buffer, stdlib_allocate, NULL, 0);
     Flat_hash_map anagram_map = CCC_flat_hash_map_initialize(
-        NULL, struct Str_view_int, key, hash_string_offset,
+        NULL, struct String_int, key, hash_string_offset,
         str_view_int_are_equal, stdlib_allocate, &str_arena, 0);
     TCG_for_each_test_case(group_anagrams_tests, {
         struct Group_anagrams_output const output
