@@ -53,8 +53,7 @@ hash_string_offset(CCC_Key_context const context)
 static void
 destroy_nested_buffers(CCC_Type_context const str_view_buffer)
 {
-    Buffer *const buffer = str_view_buffer.type;
-    clear_and_free(buffer, NULL);
+    buffer_clear_and_free(str_view_buffer.type, NULL);
 }
 
 static inline bool
