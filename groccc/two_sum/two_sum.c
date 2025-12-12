@@ -23,7 +23,7 @@ You can return the answer in any order. */
 #include "../hash_helpers.h"
 #include "../loggers.h"
 #include "../test_case_generator.h"
-#include "two_sum_test_cases.h"
+#include "two_sum_tests.h"
 
 struct Two_sum_output
 two_sum(struct Two_sum_input const *const test_case, Flat_hash_map *const map)

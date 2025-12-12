@@ -1,4 +1,4 @@
-#include "longest_consecutive_sequence_test_cases.h"
+#include "longest_consecutive_sequence_tests.h"
 
 #define FLAT_HASH_MAP_USING_NAMESPACE_CCC
 #define TRAITS_USING_NAMESPACE_CCC

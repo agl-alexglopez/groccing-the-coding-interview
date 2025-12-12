@@ -25,7 +25,7 @@ STRUCT_PREFIX="${FIRST_CHAR}${REST_OF_STRING}"
 HEADER_GUARD=$(echo "${PROBLEM}" | tr '[:lower:]' '[:upper:]')
 
 C_FILE="$DIR/${PROBLEM}.c"
-H_FILE="$DIR/${PROBLEM}_test_cases.h"
+H_FILE="$DIR/${PROBLEM}_tests.h"
 
 
 mkdir -p "$DIR"
@@ -62,8 +62,8 @@ EOF
 # Write test cases header
 ###########################################
 cat > "$H_FILE" <<EOF
-#ifndef ${HEADER_GUARD}_H
-#define ${HEADER_GUARD}_H
+#ifndef ${HEADER_GUARD}_TESTS_H
+#define ${HEADER_GUARD}_TESTS_H
 
 #include "../test_case_generator.h"
 
@@ -92,7 +92,7 @@ TCG_test_case("describe this test", {
 
 TCG_tests_end(${PROBLEM}_tests);
 
-#endif /* ${HEADER_GUARD}_H */
+#endif /* ${HEADER_GUARD}_TESTS_H */
 EOF
 
 #################################

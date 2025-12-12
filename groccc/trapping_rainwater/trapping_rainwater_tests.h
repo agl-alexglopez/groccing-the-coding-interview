@@ -1,5 +1,5 @@
-#ifndef TRAPPING_RAINWATER_TEST_CASES_H
-#define TRAPPING_RAINWATER_TEST_CASES_H
+#ifndef TRAPPING_RAINWATER_TESTS_H
+#define TRAPPING_RAINWATER_TESTS_H
 
 #include "ccc/buffer.h"
 
@@ -86,4 +86,4 @@ TCG_test_case("trap pockets on way to valley", {
 })
 TCG_tests_end(trapping_rainwater_tests);
 
-#endif /* TRAPPING_RAINWATER_TEST_CASES_H */
+#endif /* TRAPPING_RAINWATER_TESTS_H */

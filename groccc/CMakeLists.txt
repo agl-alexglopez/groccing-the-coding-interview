@@ -57,8 +57,8 @@ add_dependencies(problems test_case_generator)
 #######################   Macro for Adding Problem Files   ####################
 
 macro(add_problem PROBLEM_NAME)
-    add_library(${PROBLEM_NAME}_test_cases INTERFACE ${PROBLEM_NAME}/${PROBLEM_NAME}_test_cases.h)
-    target_link_libraries(${PROBLEM_NAME}_test_cases INTERFACE ccc::ccc)
+    add_library(${PROBLEM_NAME}_tests INTERFACE ${PROBLEM_NAME}/${PROBLEM_NAME}_tests.h)
+    target_link_libraries(${PROBLEM_NAME}_tests INTERFACE ccc::ccc)
     add_executable(${PROBLEM_NAME} ${PROBLEM_NAME}/${PROBLEM_NAME}.c)
     target_link_libraries(${PROBLEM_NAME}
         PRIVATE
@@ -69,7 +69,7 @@ macro(add_problem PROBLEM_NAME)
             loggers
             allocators
             hash_helpers
-            ${PROBLEM_NAME}_test_cases
+            ${PROBLEM_NAME}_tests
     )
     set_target_properties(${PROBLEM_NAME}
         PROPERTIES

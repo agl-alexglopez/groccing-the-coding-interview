@@ -13,7 +13,7 @@
 #include "../hash_helpers.h"
 #include "../loggers.h"
 #include "../string_arena.h"
-#include "group_anagrams_test_cases.h"
+#include "group_anagrams_tests.h"
 
 struct Str_view_int
 {

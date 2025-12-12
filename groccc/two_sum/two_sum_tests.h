@@ -1,5 +1,5 @@
-#ifndef TWO_SUM_TEST_CASES_H
-#define TWO_SUM_TEST_CASES_H
+#ifndef TWO_SUM_TESTS_H
+#define TWO_SUM_TESTS_H
 #include <stddef.h>
 
 #include "../test_case_generator.h"
@@ -69,4 +69,4 @@ TCG_test_case("duplicate values different pair", {
     },
 })
 TCG_tests_end(two_sum_tests);
-#endif /* TWO_SUM_TEST_CASES_H */
+#endif /* TWO_SUM_TESTS_H */

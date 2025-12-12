@@ -5,7 +5,7 @@
 
 #include "../loggers.h"
 #include "../test_case_generator.h"
-#include "trapping_rainwater_test_cases.h"
+#include "trapping_rainwater_tests.h"
 
 static inline int
 max_int(int const a, int const b)

@@ -9,7 +9,7 @@
 #include "../allocators.h"
 #include "../loggers.h"
 #include "../test_case_generator.h"
-#include "daily_temperatures_test_cases.h"
+#include "daily_temperatures_tests.h"
 
 static inline bool
 are_equal(Buffer const *const a, Buffer const *const b)

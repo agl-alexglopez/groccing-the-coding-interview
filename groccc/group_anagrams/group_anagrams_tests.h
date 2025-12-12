@@ -1,5 +1,5 @@
-#ifndef GROUP_ANAGRAMS_H
-#define GROUP_ANAGRAMS_H
+#ifndef GROUP_ANAGRAMS_TESTS_H
+#define GROUP_ANAGRAMS_TESTS_H
 
 #include "../test_case_generator.h"
 
@@ -68,4 +68,4 @@ TCG_test_case("3 groups", {
 })
 TCG_tests_end(group_anagrams_tests);
 
-#endif /* GROUP_ANAGRAMS_H */
+#endif /* GROUP_ANAGRAMS_TESTS_H */

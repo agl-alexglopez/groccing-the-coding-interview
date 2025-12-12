@@ -1,5 +1,5 @@
-#ifndef LONGEST_CONSECUTIVE_SEQUENCE_H
-#define LONGEST_CONSECUTIVE_SEQUENCE_H
+#ifndef LONGEST_CONSECUTIVE_SEQUENCE_TESTS_H
+#define LONGEST_CONSECUTIVE_SEQUENCE_TESTS_H
 
 #include "../test_case_generator.h"
 
@@ -186,4 +186,4 @@ TCG_test_case("9 consecutive", {
 })
 TCG_tests_end(longest_consecutive_sequence_tests);
 
-#endif /* LONGEST_CONSECUTIVE_SEQUENCE_H */
+#endif /* LONGEST_CONSECUTIVE_SEQUENCE_TESTS_H */

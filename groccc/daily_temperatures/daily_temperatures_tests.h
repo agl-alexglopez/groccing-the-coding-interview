@@ -1,5 +1,5 @@
-#ifndef DAILY_TEMPERATURES_H
-#define DAILY_TEMPERATURES_H
+#ifndef DAILY_TEMPERATURES_TESTS_H
+#define DAILY_TEMPERATURES_TESTS_H
 
 #include "ccc/buffer.h"
 
@@ -237,4 +237,4 @@ TCG_test_case("jagged mixed pattern", {
 })
 TCG_tests_end(daily_temperatures_tests);
 
-#endif /* DAILY_TEMPERATURES_H */
+#endif /* DAILY_TEMPERATURES_TESTS_H */
