@@ -34,7 +34,7 @@ mkdir -p "$DIR"
 # Write C file (solution implementation)
 ###########################################
 cat > "$C_FILE" <<EOF
-#include "${PROBLEM}_test_cases.h"
+#include "${PROBLEM}_tests.h"
 
 /* TODO: solve $PROBLEM. Optionally change function signature if desired. */
 static struct ${STRUCT_PREFIX}_output
