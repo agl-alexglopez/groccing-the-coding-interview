@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,12 +10,15 @@
 #include "ccc/buffer.h"
 #include "ccc/flat_hash_map.h"
 #include "ccc/traits.h"
+#include "ccc/types.h"
+#include "str_view/str_view.h"
 
 #include "group_anagrams_tests.h"
 #include "utility/allocators.h"
 #include "utility/hash_helpers.h"
 #include "utility/loggers.h"
 #include "utility/string_arena.h"
+#include "utility/test_case_generator.h"
 
 struct String_int
 {

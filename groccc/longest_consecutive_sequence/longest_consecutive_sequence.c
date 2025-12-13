@@ -4,10 +4,12 @@
 #define TRAITS_USING_NAMESPACE_CCC
 #include "ccc/flat_hash_map.h"
 #include "ccc/traits.h"
+#include "ccc/types.h"
 
 #include "utility/allocators.h"
 #include "utility/hash_helpers.h"
 #include "utility/loggers.h"
+#include "utility/test_case_generator.h"
 
 static struct Longest_consecutive_sequence_output
 longest_consecutive_sequence(struct Longest_consecutive_sequence_input *input,

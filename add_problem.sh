@@ -34,6 +34,8 @@ mkdir -p "$DIR"
 # Write C file (solution implementation)
 ###########################################
 cat > "$C_FILE" <<EOF
+#include "utility/test_case_generator.h"
+
 #include "${PROBLEM}_tests.h"
 
 /* TODO: solve $PROBLEM. Optionally change function signature if desired. */
@@ -65,7 +67,7 @@ cat > "$H_FILE" <<EOF
 #ifndef ${HEADER_GUARD}_TESTS_H
 #define ${HEADER_GUARD}_TESTS_H
 
-#include "../test_case_generator.h"
+#include "utility/test_case_generator.h"
 
 struct ${STRUCT_PREFIX}_input
 {

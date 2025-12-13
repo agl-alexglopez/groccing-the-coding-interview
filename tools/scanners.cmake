@@ -3,6 +3,8 @@ file (GLOB PROJ_C_FILES
   ${CMAKE_SOURCE_DIR}/groccc/*.c
   ${CMAKE_SOURCE_DIR}/groccc/*/*.h
   ${CMAKE_SOURCE_DIR}/groccc/*/*.c
+  ${CMAKE_SOURCE_DIR}/utility/*.h
+  ${CMAKE_SOURCE_DIR}/utility/*.c
 )
 
 add_custom_target (format "clang-format" -i ${PROJ_C_FILES} --style=file COMMENT "Formatting source code...")
