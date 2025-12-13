@@ -43,7 +43,7 @@ hash_fnv_1a_str_view_to_u64(SV_Str_view const str)
     {
         hash ^= *c;
         /* Magic is FNV prime number specific to 64 bit width. */
-        hash = hash * 1099511628211ULL;
+        hash *= 1099511628211ULL;
     }
     return hash;
 }
