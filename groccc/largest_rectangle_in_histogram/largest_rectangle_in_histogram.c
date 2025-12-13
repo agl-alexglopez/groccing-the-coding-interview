@@ -47,12 +47,13 @@ int
 main(void)
 {
     int passed = 0;
-    Buffer index_stack = buffer_initialize(NULL, int, stdlib_allocate, NULL, 0);
+    Buffer index_stack_scratch_buffer
+        = buffer_initialize(NULL, int, stdlib_allocate, NULL, 0);
     TCG_for_each_test_case(largest_rectangle_in_histogram_tests, {
         struct Largest_rectangle_in_histogram_output const output
             = largest_rectangle_in_histogram(
                 &TCG_test_case_input(largest_rectangle_in_histogram_tests),
-                &index_stack);
+                &index_stack_scratch_buffer);
         struct Largest_rectangle_in_histogram_output const *const correct_output
             = &TCG_test_case_output(largest_rectangle_in_histogram_tests);
         if (output.largest_area != correct_output->largest_area)
@@ -63,8 +64,8 @@ main(void)
         {
             ++passed;
         }
-        clear(&index_stack, NULL);
+        clear(&index_stack_scratch_buffer, NULL);
     });
-    (void)clear_and_free(&index_stack, NULL);
+    (void)clear_and_free(&index_stack_scratch_buffer, NULL);
     return TCG_tests_status(largest_rectangle_in_histogram_tests, passed);
 }
