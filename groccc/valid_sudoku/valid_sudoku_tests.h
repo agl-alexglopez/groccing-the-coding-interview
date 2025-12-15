@@ -58,6 +58,26 @@ TCG_test_case("invalid box", {
         .is_valid = false,
     },
 })
+TCG_test_case("invalid middle box", {
+    .input = {
+        .board = {
+            {5,3,0, 0,7,0, 0,0,0},
+            {6,0,0, 1,9,5, 0,0,0},
+            {0,9,8, 0,0,0, 0,6,0},
+
+            {8,0,0, 0,6,0, 0,0,3},
+            {4,0,0, 8,0,8, 0,0,1}, /* Two 8's in middle box. */
+            {7,0,0, 0,2,0, 0,0,6},
+
+            {0,6,0, 0,0,0, 2,8,0},
+            {0,0,0, 4,1,9, 0,0,5},
+            {0,0,0, 0,8,0, 0,7,9},
+        },
+    },
+    .output = {
+        .is_valid = false,
+    },
+})
 TCG_test_case("invalid column", {
     .input = {
         .board = {
