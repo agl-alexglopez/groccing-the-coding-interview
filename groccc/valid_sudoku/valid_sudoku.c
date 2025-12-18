@@ -25,18 +25,15 @@ is_valid_box(int const board[const 9][9], Bitset *const row_check,
             {
                 continue;
             }
-            CCC_Tribool was_on = bitset_set(&box_check, digit, CCC_TRUE);
-            if (was_on)
+            if (bitset_set(&box_check, digit, CCC_TRUE) == CCC_TRUE)
             {
                 return false;
             }
-            was_on = bitset_set(row_check, (row * 9) + digit, CCC_TRUE);
-            if (was_on)
+            if (bitset_set(row_check, (row * 9) + digit, CCC_TRUE) == CCC_TRUE)
             {
                 return false;
             }
-            was_on = bitset_set(col_check, (col * 9) + digit, CCC_TRUE);
-            if (was_on)
+            if (bitset_set(col_check, (col * 9) + digit, CCC_TRUE) == CCC_TRUE)
             {
                 return false;
             }
