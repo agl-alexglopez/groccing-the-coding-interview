@@ -74,8 +74,6 @@ main(void)
         if (output.longest != correct_output->longest)
         {
             logfail(longest_consecutive_sequence_tests);
-            logerr("%d != correct( %d )\n", output.longest,
-                   correct_output->longest);
         }
         else
         {
