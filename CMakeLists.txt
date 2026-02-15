@@ -14,7 +14,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 include(FetchContent)
 FetchContent_Declare(
   ccc
-  URL https://github.com/skeletoss/ccc/releases/download/v0.60.2/ccc-v0.60.2.zip
+  URL https://github.com/skeletoss/ccc/releases/download/v0.62.1/ccc-v0.62.1.zip
   DOWNLOAD_EXTRACT_TIMESTAMP FALSE
 )
 FetchContent_MakeAvailable(ccc)

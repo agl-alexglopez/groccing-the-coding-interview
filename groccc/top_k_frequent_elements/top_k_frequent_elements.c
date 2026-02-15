@@ -96,8 +96,8 @@ top_k_frequent_elements(struct Top_k_frequent_elements_input const *const input,
     {
         return (struct Top_k_frequent_elements_output){};
     }
-    Buffer heap_storage = buffer_with_capacity(int, stdlib_allocate, NULL,
-                                               count(frequency).count);
+    Buffer heap_storage
+        = buffer_with_capacity(int, stdlib_allocate, count(frequency).count);
     for (struct Int_key_val const *i = begin(frequency); i != end(frequency);
          i = next(frequency, i))
     {
@@ -126,9 +126,8 @@ main(void)
     TCG_Count passed = 0;
     Flat_hash_map frequency_scratch_map = flat_hash_map_with_capacity(
         struct Int_key_val, key, hash_map_int_to_u64,
-        hash_map_int_key_val_order, stdlib_allocate, NULL, 0);
-    Buffer top_k_scratch_buffer
-        = buffer_with_capacity(int, stdlib_allocate, NULL, 0);
+        hash_map_int_key_val_order, stdlib_allocate, 0);
+    Buffer top_k_scratch_buffer = buffer_with_capacity(int, stdlib_allocate, 0);
     TCG_for_each_test_case(top_k_frequent_elements_tests, {
         struct Top_k_frequent_elements_output const output
             = top_k_frequent_elements(

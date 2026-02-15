@@ -48,7 +48,7 @@ main(void)
 {
     TCG_Count passed = 0;
     Buffer index_stack_scratch_buffer
-        = buffer_with_capacity(int, stdlib_allocate, NULL, 0);
+        = buffer_with_capacity(int, stdlib_allocate, 0);
     TCG_for_each_test_case(largest_rectangle_in_histogram_tests, {
         struct Largest_rectangle_in_histogram_output const output
             = largest_rectangle_in_histogram(

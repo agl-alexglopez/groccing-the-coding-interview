@@ -11,7 +11,7 @@
             "inherits": ["default-debug"],
             "generator": "Ninja",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "gcc-15.1"
+                "CMAKE_C_COMPILER": "gcc-15.2"
             }
         },
         {
@@ -19,7 +19,7 @@
             "inherits": ["default-release"],
             "generator": "Ninja",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "gcc-15.1"
+                "CMAKE_C_COMPILER": "gcc-15.2"
             }
         },
         {
@@ -43,7 +43,7 @@
             "inherits": ["gcc-sanitize-debug"],
             "generator": "Ninja",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "gcc-15.1"
+                "CMAKE_C_COMPILER": "gcc-15.2"
             }
         },
         {
@@ -51,7 +51,7 @@
             "inherits": ["gcc-sanitize-release"],
             "generator": "Ninja",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "gcc-15.1"
+                "CMAKE_C_COMPILER": "gcc-15.2"
             }
         }
     ]

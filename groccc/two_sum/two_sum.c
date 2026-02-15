@@ -61,7 +61,7 @@ main(void)
        buffer that we simply clear between test cases. */
     Flat_hash_map map = flat_hash_map_with_capacity(
         struct Int_key_val, key, hash_map_int_to_u64,
-        hash_map_int_key_val_order, stdlib_allocate, NULL, 0);
+        hash_map_int_key_val_order, stdlib_allocate, 0);
     TCG_for_each_test_case(two_sum_tests, {
         struct Two_sum_output const solution_output
             = two_sum(&TCG_test_case_input(two_sum_tests), &map);

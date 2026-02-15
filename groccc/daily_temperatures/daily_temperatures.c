@@ -30,7 +30,7 @@ daily_temperatures(struct Daily_temperatures_input *const input)
 {
     size_t const end = count(&input->temperatures).count;
     buffer_size_set(&input->days_until_warmer_temperature_result, end);
-    Buffer index_stack = buffer_with_capacity(int, stdlib_allocate, NULL, end);
+    Buffer index_stack = buffer_with_capacity(int, stdlib_allocate, end);
     for (size_t i = 0; i < end; ++i)
     {
         int const *const cur_temp = buffer_at(&input->temperatures, i);

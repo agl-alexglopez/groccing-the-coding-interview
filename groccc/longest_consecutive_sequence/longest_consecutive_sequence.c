@@ -26,8 +26,9 @@ longest_consecutive_sequence(struct Longest_consecutive_sequence_input *input,
             continue;
         }
         struct Int_key_val *const connect = unwrap(&entry);
-        struct Int_key_val *const left_run = get_key_value(map, &(int){*i - 1});
-        struct Int_key_val *const right_run
+        struct Int_key_val const *const left_run
+            = get_key_value(map, &(int){*i - 1});
+        struct Int_key_val const *const right_run
             = get_key_value(map, &(int){*i + 1});
         int const left_run_length = left_run ? left_run->val : 0;
         int const right_run_length = right_run ? right_run->val : 0;
@@ -64,7 +65,7 @@ main(void)
        as it grows to support the maximum array size seen so far. */
     Flat_hash_map map = CCC_flat_hash_map_with_capacity(
         struct Int_key_val, key, hash_map_int_to_u64,
-        hash_map_int_key_val_order, stdlib_allocate, NULL, 0);
+        hash_map_int_key_val_order, stdlib_allocate, 0);
     TCG_for_each_test_case(longest_consecutive_sequence_tests, {
         struct Longest_consecutive_sequence_output const output
             = longest_consecutive_sequence(
