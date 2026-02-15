@@ -43,7 +43,7 @@ endmacro()
 ###########################        Problem List      ##########################
 
 # WARNING! Do not add any comments or text below this comment. A provided script
-# appends new coding problem targets to the bottom of this file by creating the 
+# appends new coding problem targets to the bottom of this file by creating the
 # necessary files and folders and using the below macro. The script should check
 # if problems are unique so this list should not have repeats.
 

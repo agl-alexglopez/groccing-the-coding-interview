@@ -51,9 +51,9 @@ main(void)
     int passed = 0;
     TCG_for_each_test_case(${PROBLEM}_tests, {
         /* TODO: Verify your output against the correct result. */
-        struct ${STRUCT_PREFIX}_output const output 
+        struct ${STRUCT_PREFIX}_output const output
             = ${PROBLEM}(&TCG_test_case_input(${PROBLEM}_tests));
-        struct ${STRUCT_PREFIX}_output const *const correct_output 
+        struct ${STRUCT_PREFIX}_output const *const correct_output
             = &TCG_test_case_output(${PROBLEM}_tests);
     });
     return TCG_tests_status(${PROBLEM}_tests, passed);
